@@ -3,7 +3,7 @@ module.exports = {
   entry: './src/index.js',
 
   output: {
-    // path: 'build',
+    path: __dirname +  '/public',
     filename: 'bundle.js'
   },
 
@@ -13,10 +13,6 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
-      },
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader'
       }
     ]
   }
