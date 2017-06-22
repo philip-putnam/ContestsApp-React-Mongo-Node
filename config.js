@@ -14,5 +14,4 @@ export default {
   get serverUrl() {
     return `http://${this.host}:${this.port}`;
   }
-
 };

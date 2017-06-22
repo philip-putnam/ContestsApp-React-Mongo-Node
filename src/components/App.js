@@ -3,12 +3,11 @@ import axios from 'axios';
 import Header from './Header';
 import ContestPreview from './ContestPreview';
 
-export default class App extends Component {
+class App extends Component {
   state = {
     pageHeader: 'Test Header',
-    contests: []
+    contests: this.props.initialContests
   };
-
   componentDidMount() {
     axios.get('/api/contests')
       .then(res => {
@@ -34,3 +33,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default App;

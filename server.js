@@ -13,10 +13,16 @@ server.use(sassMiddleware({
 
 server.set('view engine', 'pug');
 
-import './serverRender';
+import serverRender from './serverRender';
 
 server.get('/', (req, res) => {
-  res.render('index');
+  serverRender()
+    .then(content => {
+      res.render('index', {
+        content
+      });
+    })
+    .catch(console.error);
 });
 
 server.use('/api', apiRouter);
