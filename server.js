@@ -8,7 +8,7 @@ const server = express();
 
 server.use(sassMiddleware({
   src: path.join(__dirname, 'sass'),
-  dest: path.join(__dirname, 'public')
+  dest: path.join(__dirname, '/public/css')
 }));
 
 server.set('view engine', 'pug');

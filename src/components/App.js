@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import ContestPreview from './ContestPreview';
+import data from '../testData';
 
 export default class App extends Component {
   state = {
-    pageHeader: 'Test Header'
+    pageHeader: 'Test Header',
+    contests: []
   };
+
+  componentDidMount() {
+    this.setState({
+      contests: data.contests
+    });
+  }
 
   render() {
     return (
@@ -14,7 +22,9 @@ export default class App extends Component {
           <Header message={this.state.pageHeader} />
         </div>
         <div>
-          
+          {this.state.contests.map(contest =>
+            <ContestPreview key={contest.id} {...contest} />
+          )}
         </div>
       </div>
     );
