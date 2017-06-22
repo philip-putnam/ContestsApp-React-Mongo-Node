@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.16.2",
     "express": "^4.15.3",
     "json-loader": "^0.5.4",
     "mongodb": "^2.2.29",
