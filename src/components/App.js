@@ -14,9 +14,7 @@ export default class App extends Component {
           <Header message={this.state.pageHeader} />
         </div>
         <div>
-          {this.props.contests.map(contest =>
-            <ContestPreview {...contest} />
-          )}
+          
         </div>
       </div>
     );
