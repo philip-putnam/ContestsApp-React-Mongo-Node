@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Header from './Header';
 import ContestList from './ContestList';
 import Contest from './Contest';
@@ -8,9 +9,11 @@ const pushState = (obj, url) =>
   window.history.pushState(obj, '', url);
 
 class App extends Component {
-  state = {
-    contests: this.props.initialContests
-  };
+  static propTypes = {
+    initialData: PropTypes.object.isRequired
+  }
+  
+  state = this.props.initialData;
 
   componentDidMount() {
 
