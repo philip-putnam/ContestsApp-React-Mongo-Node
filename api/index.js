@@ -15,12 +15,16 @@ const router = express.Router();
 router.get('/contests', (req, res) => {
   let contests = {};
   mdb.collection('contests').find({})
+    .project({
+      id: 1,
+      categoryName: 1,
+      contestName: 1
+    })
     .each((err, contest) => {
       assert.equal(null, err);
 
-
       if (!contest) {
-        res.send(contests);
+        res.send({ contests });
         return;
       }
 
@@ -29,7 +33,10 @@ router.get('/contests', (req, res) => {
 });
 
 router.get('/contests/:contestId', (req, res) => {
-
+  mdb.collection('contests')
+    .findOne({ id: Number(req.params.contestId) })
+    .then(contest => res.send(contest))
+    .catch(console.error);
 });
 
 export default router;
