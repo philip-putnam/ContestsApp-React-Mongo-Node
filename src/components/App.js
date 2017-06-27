@@ -21,7 +21,9 @@ class App extends Component {
 
   componentDidMount() {
     onPopState((event) => {
-      console.log(event.state);
+      this.setState({
+        currentContestId: (event.state || {}).currentContestId
+      });
     });
   }
 
