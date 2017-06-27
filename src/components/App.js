@@ -8,6 +8,10 @@ import * as api from '../api';
 const pushState = (obj, url) =>
   window.history.pushState(obj, '', url);
 
+const onPopState = handler => {
+  window.onpopstate = handler;
+};
+
 class App extends Component {
   static propTypes = {
     initialData: PropTypes.object.isRequired
@@ -16,9 +20,9 @@ class App extends Component {
   state = this.props.initialData;
 
   componentDidMount() {
-    window.onpopstate = (event) => {
-      console.log(event);
-    };
+    onPopState((event) => {
+      console.log(event.state);
+    });
   }
 
   fetchContest = (contestId) => {
