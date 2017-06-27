@@ -16,7 +16,9 @@ class App extends Component {
   state = this.props.initialData;
 
   componentDidMount() {
-
+    window.onpopstate = (event) => {
+      console.log(event);
+    };
   }
 
   fetchContest = (contestId) => {
