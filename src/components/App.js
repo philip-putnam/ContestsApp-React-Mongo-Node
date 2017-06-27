@@ -12,7 +12,7 @@ class App extends Component {
   static propTypes = {
     initialData: PropTypes.object.isRequired
   }
-  
+
   state = this.props.initialData;
 
   componentDidMount() {
@@ -59,11 +59,9 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <div className='app'>
-          <Header message={this.pageHeader()} />
-          {this.currentContent()}
-        </div>
+      <div className="App">
+        <Header message={this.pageHeader()} />
+        {this.currentContent()}
       </div>
     );
   }
