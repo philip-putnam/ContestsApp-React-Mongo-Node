@@ -90,12 +90,30 @@ class App extends Component {
     }
     return this.state.names[nameId];
   };
+
+  addName = (newName, contestId) => {
+    api.addName(newName, contestId).then(res =>
+      this.setState({
+        contests: {
+          ...this.state.contests,
+          [res.updatedContest._id]: res.updatedContest
+        },
+        names: {
+          ...this.state.names,
+          [res.newName._id]: res.newName
+        }
+      })
+    )
+      .catch(console.error);
+  };
+
   currentContent() {
     if (this.state.currentContestId) {
       return <Contest
         contestListClick={this.fetchContestList}
         fetchNames={this.fetchNames}
         lookupName={this.lookupName}
+        addName={this.addName}
         {...this.currentContest()} />;
     }
 
